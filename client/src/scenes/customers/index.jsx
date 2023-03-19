@@ -1,12 +1,11 @@
-import { Box, useTheme } from '@mui/material'
-import { useGetCustomersQuery } from 'state/api'
-import Header from 'components/Header'
-import { DataGrid } from '@mui/x-data-grid'
+import { Box, useTheme } from '@mui/material';
+import { useGetCustomersQuery } from 'state/api';
+import Header from 'components/Header';
+import { DataGrid } from '@mui/x-data-grid';
 
 const Customers = () => {
-  const theme = useTheme()
-  const { data, isLoading } = useGetCustomersQuery()
-  console.log('🚀 ~ file: index.jsx:9 ~ Customers ~ data:', data)
+  const theme = useTheme();
+  const { data, isLoading } = useGetCustomersQuery();
 
   const columns = [
     {
@@ -29,7 +28,7 @@ const Customers = () => {
       headerName: 'Phone Number',
       flex: 0.5,
       renderCell: (params) => {
-        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, '($1)$2-$3')
+        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, '($1)$2-$3');
       },
     },
     {
@@ -47,7 +46,7 @@ const Customers = () => {
       headerName: 'Role',
       flex: 0.5,
     },
-  ]
+  ];
 
   return (
     <Box m='1.5rem 2.5rem'>
@@ -80,14 +79,9 @@ const Customers = () => {
           },
         }}
       >
-        <DataGrid
-          loading={isLoading || !data}
-          getRowId={(row) => row._id}
-          rows={data || []}
-          columns={columns}
-        />
+        <DataGrid loading={isLoading || !data} getRowId={(row) => row._id} rows={data || []} columns={columns} />
       </Box>
     </Box>
-  )
-}
-export default Customers
+  );
+};
+export default Customers;
